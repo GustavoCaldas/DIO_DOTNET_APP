@@ -2,39 +2,40 @@ using System;
 using System.Collections.Generic;
 using DIO.Series.Interfaces;
 
-namespace DIO.Series.Classes
+namespace DIO.Series
 {
     public class SerieRepositorio : IRepositorio<Serie>
     {
         private List<Serie> listaSerie = new List<Serie>();
-        public void Atualiza(int id, Serie entidade)
+        public void Atualiza(int id, Serie obj)
         {
-            throw new NotImplementedException();
+            listaSerie[id] = obj;
         }
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+             // inconsistencia -> listaSerie.RemoveAt(id);
+             listaSerie[id].Excluir();
         }
 
-        public void Insere(Serie entidade)
+        public void Insere(Serie obj)
         {
-            throw new NotImplementedException();
+            listaSerie.Add(obj);
         }
 
         public List<Serie> Lista()
         {
-            throw new NotImplementedException();
+            return listaSerie;
         }
 
         public int ProximoId()
         {
-            throw new NotImplementedException();
+            return listaSerie.Count;
         }
 
         public Serie RetornaPorId(int id)
         {
-            throw new NotImplementedException();
+            return listaSerie[id];
         }
     }
 }
